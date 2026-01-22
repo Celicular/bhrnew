@@ -8,20 +8,23 @@ import { Testimonials } from "@/app/components/Testimonials";
 import { InspirationalCTA } from "@/app/components/InspirationalCTA";
 import { PopularDestinations } from "@/app/components/PopularDestinations";
 import { Footer } from "@/app/components/Footer";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#faf8f5] overflow-x-hidden">
-      <Navbar />
-      <Hero />
-      <FeaturedProperties />
-      <Destinations />
-      <ExclusiveEvents />
-      <BrandStory />
-      <Testimonials />
-      <InspirationalCTA />
-      <PopularDestinations />
-      <Footer />
-    </div>
+    <CurrencyProvider>
+      <div className="min-h-screen bg-[#faf8f5] overflow-x-hidden">
+        <Navbar />
+        <Hero />
+        <FeaturedProperties />
+        <Destinations />
+        <ExclusiveEvents />
+        <BrandStory />
+        <Testimonials />
+        <InspirationalCTA />
+        <PopularDestinations />
+        <Footer />
+      </div>
+    </CurrencyProvider>
   );
 }

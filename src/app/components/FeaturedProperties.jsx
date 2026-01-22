@@ -13,6 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { useCurrency } from "@/context/CurrencyContext";
 
 const API_BASE_URL = "https://bookholidayrental.com";
 
@@ -122,6 +123,7 @@ const PropertySkeleton = forwardRef(() => (
 PropertySkeleton.displayName = "PropertySkeleton";
 
 export function FeaturedProperties() {
+  const { currency, symbol, convertPrice } = useCurrency();
   const [favorites, setFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [apiProperties, setApiProperties] = useState([]);
@@ -379,7 +381,7 @@ export function FeaturedProperties() {
                             <div className="text-right">
                               <div className="flex items-baseline gap-1">
                                 <span className="text-3xl text-[#1a1f2e] font-serif font-light">
-                                  ${property.price}
+                                  {symbol}{Math.abs(Math.round(convertPrice(property.price))).toLocaleString()}
                                 </span>
                                 <span className="text-sm text-[#9baab8]">
                                   /night

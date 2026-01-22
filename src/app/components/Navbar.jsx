@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Heart, User, Menu, X, DollarSign } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { CurrencyModal } from "./modals/CurrencyModal";
+import { useCurrency } from "@/context/CurrencyContext";
 
 const navLinks = [
   { label: "About Us", href: "#about" },
@@ -13,6 +15,8 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isCurrencyModalOpen, setIsCurrencyModalOpen] = useState(false);
+  const { currency } = useCurrency();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +28,10 @@ export function Navbar() {
 
   return (
     <>
+      <CurrencyModal
+        isOpen={isCurrencyModalOpen}
+        onClose={() => setIsCurrencyModalOpen(false)}
+      />
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -77,6 +85,7 @@ export function Navbar() {
             <div className="flex items-center gap-3">
               {/* Currency Button */}
               <motion.button
+                onClick={() => setIsCurrencyModalOpen(true)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`hidden md:flex items-center gap-2 px-4 py-2 rounded-full border transition-all duration-300 ${
@@ -86,7 +95,7 @@ export function Navbar() {
                 }`}
               >
                 <DollarSign className="w-4 h-4" />
-                <span className="text-sm">USD</span>
+                <span className="text-sm">{currency}</span>
               </motion.button>
 
               {/* Favorites Button */}
@@ -166,13 +175,17 @@ export function Navbar() {
 
                 {/* Currency in Mobile */}
                 <motion.button
+                  onClick={() => {
+                    setIsCurrencyModalOpen(true);
+                    setIsMobileMenuOpen(false);
+                  }}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3, delay: 0.25 }}
                   className="flex items-center gap-3 px-5 py-3 rounded-xl bg-[#f8f6f3] text-[#1a1f2e] hover:bg-[#d4af37]/10 transition-colors duration-300 w-full"
                 >
                   <DollarSign className="w-5 h-5" />
-                  <span>USD - United States Dollar</span>
+                  <span>{currency} - Select Currency</span>
                 </motion.button>
               </div>
             </div>
