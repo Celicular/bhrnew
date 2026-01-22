@@ -3,7 +3,12 @@ import { motion } from "motion/react";
 
 export function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden pt-20">
+    <section 
+      className="relative h-screen w-full overflow-hidden pt-20 bg-cover bg-center"
+      style={{
+        backgroundImage: "url(/src/assets/bg.png)",
+      }}
+    >
       {/* Video Background */}
       <video
         autoPlay
@@ -12,12 +17,6 @@ export function Hero() {
         className="absolute inset-0 h-full w-full object-cover"
       >
         <source src="/src/assets/hero-video.webm" type="video/webm" />
-        {/* Fallback Image */}
-        <img
-          src="/src/assets/bg.png"
-          alt="Luxury Vacation Rental"
-          className="h-full w-full object-cover"
-        />
       </video>
       {/* Soft Dark Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[rgba(26,31,46,0.5)] via-[rgba(26,31,46,0.3)] to-[rgba(26,31,46,0.7)]" />
