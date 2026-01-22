@@ -92,11 +92,11 @@ export function CurrencyModal({ isOpen, onClose }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 flex items-center justify-center z-50 px-4"
+            className="fixed inset-0 flex items-center justify-center z-50 px-4 py-4 md:py-0"
           >
-            <div className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div className="w-full max-w-2xl max-h-[90vh] md:max-h-none bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
               {/* Header */}
-              <div className="relative h-32 bg-gradient-to-r from-[#1a1f2e] via-[#2a3f5f] to-[#1a1f2e] px-8 py-6 flex items-center justify-between">
+              <div className="relative h-24 md:h-32 bg-gradient-to-r from-[#1a1f2e] via-[#2a3f5f] to-[#1a1f2e] px-4 md:px-8 py-4 md:py-6 flex items-center justify-between">
                 {/* Decorative elements */}
                 <div className="absolute inset-0 overflow-hidden">
                   <div className="absolute top-0 right-0 w-40 h-40 bg-[#d4af37]/10 rounded-full blur-3xl" />
@@ -105,11 +105,11 @@ export function CurrencyModal({ isOpen, onClose }) {
 
                 {/* Title */}
                 <div className="relative z-10">
-                  <h2 className="text-3xl font-serif font-light text-white flex items-center gap-3">
-                    <Globe className="w-8 h-8 text-[#d4af37]" />
+                  <h2 className="text-xl md:text-3xl font-serif font-light text-white flex items-center gap-2 md:gap-3">
+                    <Globe className="w-5 md:w-8 h-5 md:h-8 text-[#d4af37]" />
                     Currency & Location
                   </h2>
-                  <p className="text-[#f8f6f3]/70 text-sm mt-1">
+                  <p className="hidden md:block text-[#f8f6f3]/70 text-sm mt-1">
                     Select your country and preferred currency
                   </p>
                 </div>
@@ -124,8 +124,8 @@ export function CurrencyModal({ isOpen, onClose }) {
               </div>
 
               {/* Content */}
-              <div className="p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="p-4 md:p-8 flex-1 overflow-y-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                   {/* Country Selection */}
                   <div className="space-y-4">
                     <div className="space-y-2">
@@ -142,7 +142,7 @@ export function CurrencyModal({ isOpen, onClose }) {
                     </div>
 
                     {/* Country List */}
-                    <div className="space-y-2 h-64 overflow-y-auto pr-2 custom-scrollbar">
+                    <div className="space-y-2 h-40 md:h-64 overflow-y-auto pr-2 custom-scrollbar">
                       {filteredCountries.map((item) => (
                         <button
                           key={item.country}
@@ -180,7 +180,7 @@ export function CurrencyModal({ isOpen, onClose }) {
                     </div>
 
                     {/* Currency List */}
-                    <div className="space-y-2 h-64 overflow-y-auto pr-2 custom-scrollbar">
+                    <div className="space-y-2 h-40 md:h-64 overflow-y-auto pr-2 custom-scrollbar">
                       {filteredCurrencies.length > 0 ? (
                         filteredCurrencies.map((item) => (
                           <button
@@ -213,8 +213,8 @@ export function CurrencyModal({ isOpen, onClose }) {
                 </div>
 
                 {/* Current Selection Summary */}
-                <div className="mt-8 p-4 rounded-xl bg-gradient-to-r from-[#faf8f5] to-[#f0ece3] border border-[#d4af37]/20">
-                  <p className="text-sm text-[#1a1f2e]">
+                <div className="mt-4 md:mt-8 p-3 md:p-4 rounded-xl bg-gradient-to-r from-[#faf8f5] to-[#f0ece3] border border-[#d4af37]/20">
+                  <p className="text-xs md:text-sm text-[#1a1f2e]">
                     <span className="font-medium">Selected:</span>{" "}
                     <span className="text-[#d4af37]">{tempCountry}</span> •{" "}
                     <span className="text-[#d4af37]">{tempCurrency}</span>
@@ -223,16 +223,16 @@ export function CurrencyModal({ isOpen, onClose }) {
               </div>
 
               {/* Footer */}
-              <div className="flex items-center gap-3 px-8 py-4 bg-[#faf8f5] border-t border-[#e0dbd3]">
+              <div className="flex items-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-[#faf8f5] border-t border-[#e0dbd3]">
                 <button
                   onClick={onClose}
-                  className="flex-1 px-6 py-3 rounded-xl border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/5 transition-all duration-300 font-medium"
+                  className="flex-1 px-4 md:px-6 py-2 md:py-3 rounded-xl border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/5 transition-all duration-300 font-medium text-xs md:text-base"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleApply}
-                  className="flex-1 px-6 py-3 rounded-xl bg-[#d4af37] text-[#1a1f2e] hover:bg-[#c9a532] shadow-lg hover:shadow-xl transition-all duration-300 font-medium"
+                  className="flex-1 px-4 md:px-6 py-2 md:py-3 rounded-xl bg-[#d4af37] text-[#1a1f2e] hover:bg-[#c9a532] shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-xs md:text-base"
                 >
                   Apply Changes
                 </button>
