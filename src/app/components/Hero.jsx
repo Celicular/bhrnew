@@ -14,7 +14,7 @@ export function Hero() {
         autoPlay
         muted
         loop
-        className="absolute inset-0 h-full w-full object-cover"
+        className="hidden md:block absolute inset-0 h-full w-full object-cover"
       >
         <source src="/assets/hero-video.webm" type="video/webm" />
       </video>
