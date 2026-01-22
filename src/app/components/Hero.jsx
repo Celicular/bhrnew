@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 export function Hero() {
   return (
-    <section 
+    <section
       className="relative h-screen w-full overflow-hidden pt-20 bg-cover bg-center"
       style={{
         backgroundImage: "url(/src/assets/bg.png)",
