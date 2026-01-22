@@ -11,7 +11,7 @@ export function Hero() {
         loop
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/src/assets/hero-video3.mp4" type="video/mp4" />
+        <source src="/src/assets/hero-video.webm" type="video/webm" />
         {/* Fallback Image */}
         <img
           src="/src/assets/bg.png"
