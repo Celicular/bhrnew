@@ -51,12 +51,12 @@ export function Navbar() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              <img 
-                src="/src/assets/logo.png" 
-                alt="BHR Logo" 
+              <img
+                src="/src/assets/logo.png"
+                alt="BHR Logo"
                 className="h-10 w-auto transition-all duration-500"
                 style={{
-                  filter: isScrolled ? "none" : "brightness(0) invert(1)"
+                  filter: isScrolled ? "none" : "brightness(0) invert(1)",
                 }}
               />
             </motion.a>

@@ -381,7 +381,10 @@ export function FeaturedProperties() {
                             <div className="text-right">
                               <div className="flex items-baseline gap-1">
                                 <span className="text-3xl text-[#1a1f2e] font-serif font-light">
-                                  {symbol}{Math.abs(Math.round(convertPrice(property.price))).toLocaleString()}
+                                  {symbol}
+                                  {Math.abs(
+                                    Math.round(convertPrice(property.price)),
+                                  ).toLocaleString()}
                                 </span>
                                 <span className="text-sm text-[#9baab8]">
                                   /night

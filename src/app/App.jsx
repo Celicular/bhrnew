@@ -1,30 +1,15 @@
-import { Navbar } from "@/app/components/Navbar";
-import { Hero } from "@/app/components/Hero";
-import { FeaturedProperties } from "@/app/components/FeaturedProperties";
-import { Destinations } from "@/app/components/Destinations";
-import { ExclusiveEvents } from "@/app/components/ExclusiveEvents";
-import { BrandStory } from "@/app/components/BrandStory";
-import { Testimonials } from "@/app/components/Testimonials";
-import { InspirationalCTA } from "@/app/components/InspirationalCTA";
-import { PopularDestinations } from "@/app/components/PopularDestinations";
-import { Footer } from "@/app/components/Footer";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import { HomePage } from "@/app/pages/HomePage";
 import { CurrencyProvider } from "@/context/CurrencyContext";
 
 export default function App() {
   return (
     <CurrencyProvider>
-      <div className="min-h-screen bg-[#faf8f5] overflow-x-hidden">
-        <Navbar />
-        <Hero />
-        <FeaturedProperties />
-        <Destinations />
-        <ExclusiveEvents />
-        <BrandStory />
-        <Testimonials />
-        <InspirationalCTA />
-        <PopularDestinations />
-        <Footer />
-      </div>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </HashRouter>
     </CurrencyProvider>
   );
 }

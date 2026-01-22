@@ -87,7 +87,12 @@ export const COUNTRIES_CURRENCIES = [
   { country: "Timor-Leste", code: "TL", currency: "USD", symbol: "$" },
   { country: "Turkey", code: "TR", currency: "TRY", symbol: "₺" },
   { country: "Turkmenistan", code: "TM", currency: "TMT", symbol: "m" },
-  { country: "United Arab Emirates", code: "AE", currency: "AED", symbol: "د.إ" },
+  {
+    country: "United Arab Emirates",
+    code: "AE",
+    currency: "AED",
+    symbol: "د.إ",
+  },
   { country: "Uzbekistan", code: "UZ", currency: "UZS", symbol: "so'm" },
   { country: "Vietnam", code: "VN", currency: "VND", symbol: "₫" },
   { country: "Yemen", code: "YE", currency: "YER", symbol: "﷼" },
@@ -101,11 +106,21 @@ export const COUNTRIES_CURRENCIES = [
   { country: "Burundi", code: "BI", currency: "BIF", symbol: "FBu" },
   { country: "Cameroon", code: "CM", currency: "XAF", symbol: "Fr" },
   { country: "Cape Verde", code: "CV", currency: "CVE", symbol: "$" },
-  { country: "Central African Republic", code: "CF", currency: "XAF", symbol: "Fr" },
+  {
+    country: "Central African Republic",
+    code: "CF",
+    currency: "XAF",
+    symbol: "Fr",
+  },
   { country: "Chad", code: "TD", currency: "XAF", symbol: "Fr" },
   { country: "Comoros", code: "KM", currency: "KMF", symbol: "Fr" },
   { country: "Congo", code: "CG", currency: "XAF", symbol: "Fr" },
-  { country: "Democratic Republic of the Congo", code: "CD", currency: "CDF", symbol: "Fr" },
+  {
+    country: "Democratic Republic of the Congo",
+    code: "CD",
+    currency: "CDF",
+    symbol: "Fr",
+  },
   { country: "Djibouti", code: "DJ", currency: "DJF", symbol: "Fr" },
   { country: "Egypt", code: "EG", currency: "EGP", symbol: "£" },
   { country: "Equatorial Guinea", code: "GQ", currency: "XAF", symbol: "Fr" },
@@ -133,7 +148,12 @@ export const COUNTRIES_CURRENCIES = [
   { country: "Niger", code: "NE", currency: "XOF", symbol: "Fr" },
   { country: "Nigeria", code: "NG", currency: "NGN", symbol: "₦" },
   { country: "Rwanda", code: "RW", currency: "RWF", symbol: "Fr" },
-  { country: "Sao Tome and Principe", code: "ST", currency: "STN", symbol: "Db" },
+  {
+    country: "Sao Tome and Principe",
+    code: "ST",
+    currency: "STN",
+    symbol: "Db",
+  },
   { country: "Senegal", code: "SN", currency: "XOF", symbol: "Fr" },
   { country: "Seychelles", code: "SC", currency: "SCR", symbol: "₨" },
   { country: "Sierra Leone", code: "SL", currency: "SLL", symbol: "Le" },
@@ -194,10 +214,25 @@ export const COUNTRIES_CURRENCIES = [
   { country: "Jamaica", code: "JM", currency: "JMD", symbol: "J$" },
   { country: "Nicaragua", code: "NI", currency: "NIO", symbol: "C$" },
   { country: "Panama", code: "PA", currency: "PAB", symbol: "B/." },
-  { country: "Saint Kitts and Nevis", code: "KN", currency: "XCD", symbol: "$" },
+  {
+    country: "Saint Kitts and Nevis",
+    code: "KN",
+    currency: "XCD",
+    symbol: "$",
+  },
   { country: "Saint Lucia", code: "LC", currency: "XCD", symbol: "$" },
-  { country: "Saint Vincent and the Grenadines", code: "VC", currency: "XCD", symbol: "$" },
-  { country: "Trinidad and Tobago", code: "TT", currency: "TTD", symbol: "TT$" },
+  {
+    country: "Saint Vincent and the Grenadines",
+    code: "VC",
+    currency: "XCD",
+    symbol: "$",
+  },
+  {
+    country: "Trinidad and Tobago",
+    code: "TT",
+    currency: "TTD",
+    symbol: "TT$",
+  },
 
   // Middle East & North Africa
   { country: "Morocco", code: "MA", currency: "MAD", symbol: "د.م." },
@@ -235,7 +270,7 @@ export const getCurrenciesByCountry = (country) => {
 
 export const getCountriesByCurrency = (currency) => {
   return COUNTRIES_CURRENCIES.filter((item) => item.currency === currency).map(
-    (item) => item.country
+    (item) => item.country,
   );
 };
 
@@ -252,36 +287,42 @@ const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 export const getExchangeRates = async () => {
   try {
     // Check if cache is still valid
-    if (exchangeRatesCache && cacheTimestamp && Date.now() - cacheTimestamp < CACHE_DURATION) {
+    if (
+      exchangeRatesCache &&
+      cacheTimestamp &&
+      Date.now() - cacheTimestamp < CACHE_DURATION
+    ) {
       return exchangeRatesCache;
     }
 
     // Fetch from exchangerate-api.com (free tier: 1500 requests/month)
-    const response = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
-    
+    const response = await fetch(
+      "https://api.exchangerate-api.com/v4/latest/USD",
+    );
+
     if (!response.ok) throw new Error("Failed to fetch exchange rates");
-    
+
     const data = await response.json();
-    
+
     // Cache the rates
     exchangeRatesCache = data.rates;
     cacheTimestamp = Date.now();
-    
+
     // Also store in localStorage for persistence
     localStorage.setItem("exchangeRates", JSON.stringify(data.rates));
     localStorage.setItem("exchangeRatesTimestamp", cacheTimestamp.toString());
-    
+
     return data.rates;
   } catch (error) {
     console.error("Error fetching exchange rates:", error);
-    
+
     // Try to use cached rates from localStorage
     const cached = localStorage.getItem("exchangeRates");
     if (cached) {
       exchangeRatesCache = JSON.parse(cached);
       return exchangeRatesCache;
     }
-    
+
     // Fallback: return empty object (rates will default to 1)
     return {};
   }

@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import { getCurrencySymbol, convertPrice } from "@/utils/currencyData";
 
 const CurrencyContext = createContext();
@@ -20,7 +26,9 @@ export function CurrencyProvider({ children }) {
     const fetchRates = async () => {
       setIsLoadingRates(true);
       try {
-        const response = await fetch("https://api.exchangerate-api.com/v4/latest/USD");
+        const response = await fetch(
+          "https://api.exchangerate-api.com/v4/latest/USD",
+        );
         if (response.ok) {
           const data = await response.json();
           setExchangeRates(data.rates);
@@ -49,10 +57,13 @@ export function CurrencyProvider({ children }) {
     localStorage.setItem("selectedCurrency", currency);
   }, [currency]);
 
-  const convertPriceSync = useCallback((priceInUSD) => {
-    const rate = exchangeRates[currency] || 1;
-    return Math.round(priceInUSD * rate * 100) / 100;
-  }, [currency, exchangeRates]);
+  const convertPriceSync = useCallback(
+    (priceInUSD) => {
+      const rate = exchangeRates[currency] || 1;
+      return Math.round(priceInUSD * rate * 100) / 100;
+    },
+    [currency, exchangeRates],
+  );
 
   const value = {
     country,
@@ -65,7 +76,9 @@ export function CurrencyProvider({ children }) {
   };
 
   return (
-    <CurrencyContext.Provider value={value}>{children}</CurrencyContext.Provider>
+    <CurrencyContext.Provider value={value}>
+      {children}
+    </CurrencyContext.Provider>
   );
 }
 

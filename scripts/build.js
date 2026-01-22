@@ -23,7 +23,7 @@ esbuild
     // Copy index.html to dist folder
     const indexHtmlPath = path.join(projectRoot, "index.html");
     const distIndexPath = path.join(projectRoot, "dist", "index.html");
-    
+
     fs.copyFileSync(indexHtmlPath, distIndexPath);
     console.log("✓ Copied index.html to dist/");
   })

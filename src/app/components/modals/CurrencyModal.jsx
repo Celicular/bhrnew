@@ -25,10 +25,10 @@ export function CurrencyModal({ isOpen, onClose }) {
   const handleCountryChange = (newCountry) => {
     setTempCountry(newCountry);
     setCountrySearch("");
-    
+
     // Auto-select the first available currency for this country
     const firstCurrency = COUNTRIES_CURRENCIES.find(
-      (item) => item.country === newCountry
+      (item) => item.country === newCountry,
     )?.currency;
     if (firstCurrency) {
       setTempCurrency(firstCurrency);
@@ -51,7 +51,7 @@ export function CurrencyModal({ isOpen, onClose }) {
 
   // Filter countries
   const filteredCountries = UNIQUE_COUNTRIES.filter((item) =>
-    item.country.toLowerCase().includes(countrySearch.toLowerCase())
+    item.country.toLowerCase().includes(countrySearch.toLowerCase()),
   ).sort((a, b) => {
     // Put selected country at top
     if (a.country === tempCountry) return -1;
@@ -60,16 +60,18 @@ export function CurrencyModal({ isOpen, onClose }) {
   });
 
   // Filter currencies - show ALL currencies, not just for selected country
-  const filteredCurrencies = allCurrencies.filter(
-    (item) =>
-      item.currency.toLowerCase().includes(currencySearch.toLowerCase()) ||
-      item.symbol.toLowerCase().includes(currencySearch.toLowerCase())
-  ).sort((a, b) => {
-    // Put selected currency at top
-    if (a.currency === tempCurrency) return -1;
-    if (b.currency === tempCurrency) return 1;
-    return 0;
-  });
+  const filteredCurrencies = allCurrencies
+    .filter(
+      (item) =>
+        item.currency.toLowerCase().includes(currencySearch.toLowerCase()) ||
+        item.symbol.toLowerCase().includes(currencySearch.toLowerCase()),
+    )
+    .sort((a, b) => {
+      // Put selected currency at top
+      if (a.currency === tempCurrency) return -1;
+      if (b.currency === tempCurrency) return 1;
+      return 0;
+    });
 
   return (
     <AnimatePresence>
@@ -153,7 +155,9 @@ export function CurrencyModal({ isOpen, onClose }) {
                         >
                           <div className="flex items-center justify-between">
                             <span>{item.country}</span>
-                            <span className="text-xs opacity-70">{item.code}</span>
+                            <span className="text-xs opacity-70">
+                              {item.code}
+                            </span>
                           </div>
                         </button>
                       ))}
@@ -193,7 +197,9 @@ export function CurrencyModal({ isOpen, onClose }) {
                                 <DollarSign className="w-4 h-4" />
                                 <span>{item.currency}</span>
                               </div>
-                              <span className="text-sm opacity-70">{item.symbol}</span>
+                              <span className="text-sm opacity-70">
+                                {item.symbol}
+                              </span>
                             </div>
                           </button>
                         ))

@@ -1,6 +1,7 @@
 # Modal Design System Documentation
 
 ## Overview
+
 The website uses a unified, luxury modal design pattern that maintains visual consistency across the entire application. All modals follow this established design to create a cohesive, premium user experience.
 
 ---
@@ -8,14 +9,16 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 ## Design Philosophy
 
 **Theme**: Modern Luxury
-**Primary Colors**: 
+**Primary Colors**:
+
 - Gold/Accent: `#d4af37`
 - Dark: `#1a1f2e`
 - Light/Background: `#faf8f5`
 - Text Secondary: `#9baab8`, `#6b7280`
 - Border: `#e0dbd3`
 
-**Typography**: 
+**Typography**:
+
 - Serif font for headings (elegant)
 - Sans-serif for body (readable)
 - Light font weights (luxurious feel)
@@ -25,6 +28,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 ## Modal Anatomy
 
 ### 1. **Backdrop**
+
 ```jsx
 <motion.div
   initial={{ opacity: 0 }}
@@ -34,12 +38,14 @@ The website uses a unified, luxury modal design pattern that maintains visual co
   className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
 />
 ```
+
 - Subtle blur effect (`backdrop-blur-sm`)
 - Dark overlay (`bg-black/40`)
 - Clickable to close (dismiss behavior)
 - Lower z-index (40) so modal sits above
 
 ### 2. **Container**
+
 ```jsx
 <motion.div
   initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -55,6 +61,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 ```
 
 **Key Features**:
+
 - Centered with flexbox (`inset-0 flex items-center justify-center`)
 - Responsive width (`max-w-2xl`, `w-full`, `px-4`)
 - High z-index (50) above backdrop
@@ -63,6 +70,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 - Strong shadow (`shadow-2xl`)
 
 ### 3. **Header Section**
+
 ```jsx
 <div className="relative h-32 bg-gradient-to-r from-[#1a1f2e] via-[#2a3f5f] to-[#1a1f2e] px-8 py-6 flex items-center justify-between">
   {/* Decorative elements */}
@@ -91,6 +99,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 ```
 
 **Design Elements**:
+
 - Gradient background (dark to slightly lighter)
 - Decorative blur circles (gold accent with low opacity)
 - Icon + Title + Subtitle layout
@@ -99,6 +108,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 - Minimum height for prominence (`h-32`)
 
 ### 4. **Content Section**
+
 ```jsx
 <div className="p-8">
   {/* Grid for dual-column layouts */}
@@ -110,13 +120,15 @@ The website uses a unified, luxury modal design pattern that maintains visual co
   {/* Summary/Info Card */}
   <div className="mt-8 p-4 rounded-xl bg-gradient-to-r from-[#faf8f5] to-[#f0ece3] border border-[#d4af37]/20">
     <p className="text-sm text-[#1a1f2e]">
-      <span className="font-medium">Label:</span> <span className="text-[#d4af37]">Value</span>
+      <span className="font-medium">Label:</span>{" "}
+      <span className="text-[#d4af37]">Value</span>
     </p>
   </div>
 </div>
 ```
 
 **Features**:
+
 - Generous padding (`p-8`)
 - Responsive grid layout
 - Light background for content sections
@@ -124,6 +136,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 - Subtle borders and shadows
 
 ### 5. **Input Styling**
+
 ```jsx
 <input
   type="text"
@@ -133,6 +146,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 ```
 
 **Features**:
+
 - Rounded corners (`rounded-xl`)
 - Subtle borders
 - Gold focus state
@@ -140,6 +154,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 - Placeholder text styling
 
 ### 6. **Selection Lists**
+
 ```jsx
 <div className="space-y-2 h-64 overflow-y-auto pr-2 custom-scrollbar">
   {items.map((item) => (
@@ -159,6 +174,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 ```
 
 **Features**:
+
 - Scrollable container with custom scrollbar
 - Clear selected state (gold background)
 - Hover states (lighter background)
@@ -166,6 +182,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 - Full-width buttons for easy clicking
 
 ### 7. **Custom Scrollbar**
+
 ```jsx
 <style>{`
   .custom-scrollbar::-webkit-scrollbar {
@@ -185,6 +202,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 ```
 
 **Features**:
+
 - Thin, elegant scrollbar (`6px`)
 - Gold color matching theme
 - Rounded corners
@@ -192,6 +210,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 - Transparent track
 
 ### 8. **Footer Section**
+
 ```jsx
 <div className="flex items-center gap-3 px-8 py-4 bg-[#faf8f5] border-t border-[#e0dbd3]">
   <button className="flex-1 px-6 py-3 rounded-xl border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/5 transition-all duration-300 font-medium">
@@ -204,6 +223,7 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 ```
 
 **Features**:
+
 - Border separator from content
 - Dual button layout (Cancel/Apply)
 - Secondary button: outlined gold
@@ -215,17 +235,20 @@ The website uses a unified, luxury modal design pattern that maintains visual co
 ## Animation Patterns
 
 ### Entry Animation
+
 ```jsx
 initial={{ opacity: 0, scale: 0.95, y: 20 }}
 animate={{ opacity: 1, scale: 1, y: 0 }}
 exit={{ opacity: 0, scale: 0.95, y: 20 }}
 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
 ```
+
 - Slight scale-up + fade-in effect
 - Quick entrance (300ms)
 - Custom easing for natural feel
 
 ### Element Animations
+
 - **Backdrop**: Simple fade (`opacity: 0 → 1`)
 - **Modal**: Scale + fade + slide
 - **Buttons**: Scale on hover (`whileHover={{ scale: 1.05 }}`)
@@ -293,9 +316,7 @@ export function CustomModal({ isOpen, onClose }) {
               </div>
 
               {/* Content */}
-              <div className="p-8">
-                {/* Add your content here */}
-              </div>
+              <div className="p-8">{/* Add your content here */}</div>
 
               {/* Footer */}
               <div className="flex items-center gap-3 px-8 py-4 bg-[#faf8f5] border-t border-[#e0dbd3]">
@@ -325,26 +346,28 @@ export function CustomModal({ isOpen, onClose }) {
 
 ## Color Palette
 
-| Element | Color | Hex | Usage |
-|---------|-------|-----|-------|
-| Primary Accent | Gold | `#d4af37` | Buttons, highlights, focus states |
-| Primary Dark | Dark Navy | `#1a1f2e` | Headers, main text |
-| Primary Light | Off-white | `#faf8f5` | Backgrounds, cards |
-| Secondary Text | Muted Blue | `#9baab8` | Subtitles, secondary info |
-| Borders | Light Tan | `#e0dbd3` | Input borders, dividers |
-| Dark Gradient | Navy Gradient | `#1a1f2e → #2a3f5f` | Header background |
+| Element        | Color         | Hex                 | Usage                             |
+| -------------- | ------------- | ------------------- | --------------------------------- |
+| Primary Accent | Gold          | `#d4af37`           | Buttons, highlights, focus states |
+| Primary Dark   | Dark Navy     | `#1a1f2e`           | Headers, main text                |
+| Primary Light  | Off-white     | `#faf8f5`           | Backgrounds, cards                |
+| Secondary Text | Muted Blue    | `#9baab8`           | Subtitles, secondary info         |
+| Borders        | Light Tan     | `#e0dbd3`           | Input borders, dividers           |
+| Dark Gradient  | Navy Gradient | `#1a1f2e → #2a3f5f` | Header background                 |
 
 ---
 
 ## Responsive Behavior
 
 ### Mobile (< 768px)
+
 - Modal uses `max-w-2xl` with `px-4` for padding
 - Single column layout for content
 - Header remains prominent but compact
 - Buttons stack if needed
 
 ### Tablet & Desktop
+
 - Full width up to `max-w-2xl`
 - Grid layouts expand to multiple columns
 - Generous padding maintained
@@ -387,4 +410,3 @@ When creating a new modal:
 - **Component**: [CurrencyModal.jsx](../src/app/components/modals/CurrencyModal.jsx)
 - **Context**: [CurrencyContext.jsx](../src/context/CurrencyContext.jsx)
 - **Styling**: Uses Tailwind CSS classes (configured in `tailwind.config.js`)
-
