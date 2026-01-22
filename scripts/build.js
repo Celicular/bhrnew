@@ -5,6 +5,7 @@ import fs from "fs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
+const srcPath = path.resolve(projectRoot, "src");
 
 esbuild
   .build({
@@ -16,7 +17,7 @@ esbuild
       ".jsx": "jsx",
     },
     alias: {
-      "@": path.join(projectRoot, "src"),
+      "@": srcPath,
     },
   })
   .then(() => {
