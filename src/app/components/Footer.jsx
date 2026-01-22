@@ -38,7 +38,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-6">
             <img
-              src="/public/assets/logo.png"
+              src="/assets/logo.png"
               alt="BHR Logo"
               className="h-10"
               style={{ filter: "brightness(0) invert(1)" }}

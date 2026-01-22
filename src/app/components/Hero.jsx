@@ -6,7 +6,7 @@ export function Hero() {
     <section
       className="relative h-screen w-full overflow-hidden pt-20 bg-cover bg-center"
       style={{
-        backgroundImage: "url(/public/assets/bgmobile.avif)",
+        backgroundImage: "url(/assets/bgmobile.avif)",
       }}
     >
       {/* Video Background */}
@@ -16,7 +16,7 @@ export function Hero() {
         loop
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/public/assets/hero-video.webm" type="video/webm" />
+        <source src="/assets/hero-video.webm" type="video/webm" />
       </video>
       {/* Soft Dark Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[rgba(26,31,46,0.5)] via-[rgba(26,31,46,0.3)] to-[rgba(26,31,46,0.7)]" />
@@ -28,14 +28,14 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h1 className="mb-6 text-6xl md:text-7xl lg:text-8xl text-[#faf8f5] tracking-wide font-serif font-light">
+          <h1 className="mb-6 text-4xl md:text-7xl lg:text-8xl text-[#faf8f5] tracking-wide font-serif font-light">
             Your Perfect
             <br />
             <span className="text-[#d4af37]">Vacation Home</span>
             <br />
             Awaits
           </h1>
-          <p className="mb-12 text-lg md:text-xl text-[#f8f6f3]/90 max-w-2xl mx-auto font-light">
+          <p className="mb-12 text-sm md:text-xl text-[#f8f6f3]/90 max-w-2xl mx-auto font-light">
             Discover exceptional vacation rentals across the United States.
             <br />
             From beachfront escapes to mountain retreats.
@@ -49,8 +49,8 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="w-full max-w-5xl"
         >
-          <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-[2rem] p-8 shadow-2xl">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+          <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-[2rem] p-4 md:p-8 shadow-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end text-xs md:text-base">
               {/* Destination */}
               <div className="space-y-2">
                 <label className="text-xs text-[#f8f6f3]/70 uppercase tracking-wider font-medium">
@@ -97,7 +97,7 @@ export function Hero() {
               </div>
 
               {/* Search Button */}
-              <button className="group relative overflow-hidden bg-[#d4af37] hover:bg-[#c9a532] text-[#1a1f2e] px-8 py-3 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#d4af37]/30 font-medium">
+              <button className="group relative overflow-hidden bg-[#d4af37] hover:bg-[#c9a532] text-[#1a1f2e] px-6 md:px-8 py-2 md:py-3 rounded-2xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-[#d4af37]/30 font-medium text-sm md:text-base">
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   <Search className="w-5 h-5" />
                   Search
@@ -113,7 +113,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2"
         >
           <div className="flex flex-col items-center gap-2">
             <span className="text-xs text-[#f8f6f3]/60 uppercase tracking-wider">
