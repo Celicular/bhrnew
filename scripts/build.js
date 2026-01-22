@@ -1,6 +1,7 @@
 import esbuild from "esbuild";
 import path from "path";
 import { fileURLToPath } from "url";
+import fs from "fs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -17,5 +18,13 @@ esbuild
     alias: {
       "@": path.join(projectRoot, "src"),
     },
+  })
+  .then(() => {
+    // Copy index.html to dist folder
+    const indexHtmlPath = path.join(projectRoot, "index.html");
+    const distIndexPath = path.join(projectRoot, "dist", "index.html");
+    
+    fs.copyFileSync(indexHtmlPath, distIndexPath);
+    console.log("✓ Copied index.html to dist/");
   })
   .catch(() => process.exit(1));
