@@ -1,11 +1,13 @@
 import esbuild from "esbuild";
 import path from "path";
-import { fileURLToPath } from "url";
 import fs from "fs";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const projectRoot = path.resolve(__dirname, "..");
+// Use process.cwd() for reliable project root detection
+const projectRoot = process.cwd();
 const srcPath = path.resolve(projectRoot, "src");
+
+console.log("Project root:", projectRoot);
+console.log("Source path:", srcPath);
 
 esbuild
   .build({
