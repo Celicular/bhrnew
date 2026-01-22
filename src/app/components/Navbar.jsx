@@ -52,7 +52,7 @@ export function Navbar() {
               whileTap={{ scale: 0.98 }}
             >
               <img
-                src="/src/assets/logo.png"
+                src="/public/assets/logo.png"
                 alt="BHR Logo"
                 className="h-10 w-auto transition-all duration-500"
                 style={{
