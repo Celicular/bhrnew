@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/dev.js",
-    "build": "tailwindcss -i src/styles/index.css -o dist/index.css && esbuild src/main.jsx --bundle --outfile=dist/main.js --loader:.js=jsx --loader:.jsx=jsx"
+    "build": "tailwindcss -i src/styles/index.css -o dist/index.css && node scripts/build.js"
   },
   "dependencies": {
     "react": "18.3.1",
