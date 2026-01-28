@@ -34,7 +34,7 @@ const testimonials = [
 export function Testimonials() {
   return (
     <section
-      className="py-32 px-6 bg-gradient-to-b from-[#f8f6f3] to-[#faf8f5]"
+      className="py-32 px-6 bg-gradient-to-b from-warm-ivory to-bone-white"
       id="testimonials"
     >
       <div className="max-w-7xl mx-auto">
@@ -46,10 +46,10 @@ export function Testimonials() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl text-[#1a1f2e] mb-4 font-serif font-light">
+          <h2 className="text-5xl md:text-6xl text-midnight-navy dark:text-white mb-4 font-serif font-light">
             Guest Experiences
           </h2>
-          <p className="text-lg text-[#6b7280] max-w-2xl mx-auto font-light">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto font-light">
             Stories from our distinguished travelers
           </p>
         </motion.div>
@@ -70,10 +70,10 @@ export function Testimonials() {
             >
               <div className="group relative h-full">
                 {/* Glass Card */}
-                <div className="relative h-full p-8 rounded-[2rem] backdrop-blur-sm bg-white/60 border border-white/40 shadow-lg hover:shadow-2xl hover:bg-white/80 transition-all duration-500">
+                <div className="relative h-full p-8 rounded-[2rem] backdrop-blur-sm bg-white/60 dark:bg-slate-800/60 border border-white/40 dark:border-slate-700/60 shadow-lg hover:shadow-2xl hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all duration-500">
                   {/* Quote Icon */}
                   <div className="absolute top-8 right-8 opacity-10 group-hover:opacity-20 transition-opacity duration-500">
-                    <Quote className="w-16 h-16 text-[#d4af37]" />
+                    <Quote className="w-16 h-16 text-champagne-gold" />
                   </div>
 
                   {/* Rating */}
@@ -81,34 +81,34 @@ export function Testimonials() {
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-5 h-5 fill-[#d4af37] text-[#d4af37]"
+                        className="w-5 h-5 fill-champagne-gold text-champagne-gold"
                       />
                     ))}
                   </div>
 
                   {/* Review */}
-                  <p className="text-[#1a1f2e] mb-8 leading-relaxed font-light">
+                  <p className="text-midnight-navy dark:text-white mb-8 leading-relaxed font-light">
                     "{testimonial.review}"
                   </p>
 
                   {/* Divider */}
-                  <div className="h-px bg-gradient-to-r from-transparent via-[#d4af37]/30 to-transparent mb-6" />
+                  <div className="h-px bg-gradient-to-r from-transparent via-[var(--champagne-gold)]/30 to-transparent mb-6" />
 
                   {/* Author Info */}
                   <div>
-                    <div className="text-lg text-[#1a1f2e] mb-1 font-serif font-medium">
+                    <div className="text-lg text-midnight-navy dark:text-white mb-1 font-serif font-medium">
                       {testimonial.name}
                     </div>
-                    <div className="text-sm text-[#9baab8] mb-3">
+                    <div className="text-sm text-dusty-sky-blue dark:text-gray-400 mb-3">
                       {testimonial.location}
                     </div>
-                    <div className="text-xs text-[#d4af37] uppercase tracking-wider">
+                    <div className="text-xs text-champagne-gold uppercase tracking-wider">
                       Stayed at {testimonial.stay}
                     </div>
                   </div>
 
                   {/* Decorative Element */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-[2rem]" />
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[var(--champagne-gold)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-b-[2rem]" />
                 </div>
               </div>
             </motion.div>
@@ -123,7 +123,7 @@ export function Testimonials() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mt-16"
         >
-          <button className="group px-10 py-5 rounded-full border-2 border-[#1a1f2e]/20 text-[#1a1f2e] hover:border-[#d4af37] hover:text-[#d4af37] transition-all duration-500">
+          <button className="group px-10 py-5 rounded-full border-2 border-midnight-navy/20 text-midnight-navy hover:border-champagne-gold hover:text-champagne-gold transition-all duration-500">
             Read More Stories
           </button>
         </motion.div>

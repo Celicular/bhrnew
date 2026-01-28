@@ -10,7 +10,7 @@ const metrics = [
 
 export function BrandStory() {
   return (
-    <section className="py-32 px-6 bg-[#faf8f5]" id="about">
+    <section className="py-32 px-6 bg-bone-white" id="about">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left: Image */}
@@ -30,7 +30,7 @@ export function BrandStory() {
             </div>
 
             {/* Floating Accent */}
-            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-[#d4af37]/10 rounded-full blur-3xl" />
+            <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-champagne-gold/10 rounded-full blur-3xl" />
           </motion.div>
 
           {/* Right: Content */}
@@ -42,17 +42,17 @@ export function BrandStory() {
             className="space-y-8"
           >
             <div>
-              <div className="inline-block px-5 py-2 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/20 mb-6">
-                <span className="text-sm text-[#d4af37] uppercase tracking-wider">
+              <div className="inline-block px-5 py-2 rounded-full bg-champagne-gold/10 border border-champagne-gold/20 mb-6">
+                <span className="text-sm text-champagne-gold uppercase tracking-wider">
                   Our Story
                 </span>
               </div>
-              <h2 className="text-5xl md:text-6xl text-[#1a1f2e] mb-6 font-serif font-light">
+              <h2 className="text-5xl md:text-6xl text-midnight-navy mb-6 font-serif font-light">
                 About Book
                 <br />
                 Holiday Rentals
               </h2>
-              <div className="space-y-4 text-lg text-[#6b7280] font-light leading-relaxed">
+              <div className="space-y-4 text-lg text-gray-600 font-light leading-relaxed">
                 <p>
                   We are revolutionizing the way travelers discover and book
                   their perfect vacation homes. With over a decade of experience
@@ -65,14 +65,14 @@ export function BrandStory() {
             {/* Value Props */}
             <div className="space-y-6 pt-4">
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-2xl bg-[#f8f6f3] border border-[#1a1f2e]/5">
-                  <Heart className="w-6 h-6 text-[#d4af37]" />
+                <div className="p-3 rounded-2xl bg-warm-ivory border border-midnight-navy/5">
+                  <Heart className="w-6 h-6 text-champagne-gold" />
                 </div>
                 <div>
-                  <h3 className="text-xl text-[#1a1f2e] mb-2 font-serif font-medium">
+                  <h3 className="text-xl text-midnight-navy mb-2 font-serif font-medium">
                     Guest-Centric Approach
                   </h3>
-                  <p className="text-[#6b7280] font-light">
+                  <p className="text-gray-600 font-light">
                     Your satisfaction is our top priority. Every detail, every
                     feature, and every service is designed with you in mind.
                   </p>
@@ -80,14 +80,14 @@ export function BrandStory() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-2xl bg-[#f8f6f3] border border-[#1a1f2e]/5">
-                  <Shield className="w-6 h-6 text-[#d4af37]" />
+                <div className="p-3 rounded-2xl bg-warm-ivory border border-midnight-navy/5">
+                  <Shield className="w-6 h-6 text-champagne-gold" />
                 </div>
                 <div>
-                  <h3 className="text-xl text-[#1a1f2e] mb-2 font-serif font-medium">
+                  <h3 className="text-xl text-midnight-navy mb-2 font-serif font-medium">
                     Trusted & Verified
                   </h3>
-                  <p className="text-[#6b7280] font-light">
+                  <p className="text-gray-600 font-light">
                     All properties undergo rigorous verification to ensure
                     quality, safety, and authenticity for your peace of mind.
                   </p>
@@ -95,14 +95,14 @@ export function BrandStory() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="p-3 rounded-2xl bg-[#f8f6f3] border border-[#1a1f2e]/5">
-                  <Globe className="w-6 h-6 text-[#d4af37]" />
+                <div className="p-3 rounded-2xl bg-warm-ivory border border-midnight-navy/5">
+                  <Globe className="w-6 h-6 text-champagne-gold" />
                 </div>
                 <div>
-                  <h3 className="text-xl text-[#1a1f2e] mb-2 font-serif font-medium">
+                  <h3 className="text-xl text-midnight-navy mb-2 font-serif font-medium">
                     Nationwide Network
                   </h3>
-                  <p className="text-[#6b7280] font-light">
+                  <p className="text-gray-600 font-light">
                     Access thousands of curated properties across prime US
                     destinations, all in one place.
                   </p>
@@ -111,7 +111,7 @@ export function BrandStory() {
             </div>
 
             {/* Metrics */}
-            <div className="grid grid-cols-2 gap-6 pt-8 border-t border-[#1a1f2e]/10">
+            <div className="grid grid-cols-2 gap-6 pt-8 border-t border-midnight-navy/10">
               {metrics.map((metric, index) => (
                 <motion.div
                   key={index}
@@ -125,23 +125,27 @@ export function BrandStory() {
                   }}
                   className="text-center"
                 >
-                  <div className="text-3xl md:text-4xl text-[#1a1f2e] mb-2 font-serif font-light">
+                  <div className="text-3xl md:text-4xl text-midnight-navy mb-2 font-serif font-light">
                     {metric.value}
                   </div>
-                  <div className="text-sm text-[#9baab8]">{metric.label}</div>
+                  <div className="text-sm text-dusty-sky-blue">
+                    {metric.label}
+                  </div>
                 </motion.div>
               ))}
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 pt-8">
-              <button className="group relative overflow-hidden px-10 py-5 rounded-full bg-[#1a1f2e] text-[#faf8f5] hover:bg-[#2a3142] transition-all duration-500 shadow-lg hover:shadow-xl">
-                <span className="relative z-10">Start Exploring</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#d4af37]/0 via-[#d4af37]/10 to-[#d4af37]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+              <button className="group relative overflow-hidden px-10 py-5 rounded-full bg-midnight-navy text-bone-white hover:bg-charcoal-blue transition-all duration-500 shadow-lg hover:shadow-xl">
+                <span className="relative z-10 dark:group-hover:text-white">
+                  Start Exploring
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--champagne-gold)]/0 via-[var(--champagne-gold)]/10 to-[var(--champagne-gold)]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               </button>
 
               <button
-                className="px-10 py-5 rounded-full border-2 border-[#1a1f2e]/20 text-[#1a1f2e] hover:border-[#d4af37] hover:text-[#d4af37] transition-all duration-500"
+                className="px-10 py-5 rounded-full border-2 border-midnight-navy/20 text-midnight-navy hover:border-champagne-gold hover:text-champagne-gold transition-all duration-500"
                 id="host"
               >
                 Become a Host

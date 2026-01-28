@@ -41,7 +41,7 @@ const destinations = [
 
 export function PopularDestinations() {
   return (
-    <section className="py-32 px-6 bg-[#faf8f5]">
+    <section className="py-32 px-6 bg-bone-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -51,10 +51,10 @@ export function PopularDestinations() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl text-[#1a1f2e] mb-4 font-serif font-light">
+          <h2 className="text-5xl md:text-6xl text-midnight-navy mb-4 font-serif font-light">
             Popular Destinations
           </h2>
-          <p className="text-lg text-[#6b7280] max-w-2xl mx-auto font-light">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto font-light">
             Trending vacation spots across the United States
           </p>
         </motion.div>
@@ -95,13 +95,13 @@ export function PopularDestinations() {
 
                   {/* Destination Name */}
                   <div className="absolute inset-x-0 bottom-0 p-6">
-                    <h3 className="text-2xl md:text-3xl text-[#faf8f5] transform transition-transform duration-500 group-hover:translate-y-[-8px] font-serif font-medium">
+                    <h3 className="text-2xl md:text-3xl text-bone-white transform transition-transform duration-500 group-hover:translate-y-[-8px] font-serif font-medium">
                       {destination.name}
                     </h3>
                   </div>
 
                   {/* Hover Accent */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-[#d4af37] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-[2rem]" />
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-champagne-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-t-[2rem]" />
                 </div>
               </motion.div>
             );

@@ -1,5 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 
+/* Only apply transitions to specific interactive elements to avoid memory bloat */
+button,
+a,
+input,
+textarea,
+select,
+.card,
+.modal,
+nav,
+[role="button"],
+[class*="hover"],
+[class*="transition"] {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
 :root {
   --font-size: 16px;
 
@@ -12,6 +31,65 @@
   --dusty-sky-blue: #9baab8;
   --soft-stone-gray: #c5c3bd;
   --deep-navy-overlay: rgba(26, 31, 46, 0.7);
+
+  /* Section-Specific Accent Colors */
+  --accent-primary-50: #f0fdf4;
+  --accent-primary-200: #bbf7d0;
+  --accent-primary-300: #86efac;
+  --accent-secondary-50: #f0fdfa;
+  --accent-secondary-200: #99f6e4;
+  --accent-secondary-300: #5eead4;
+  --accent-tertiary-50: #faf5ff;
+  --accent-tertiary-200: #e9d5ff;
+  --accent-tertiary-300: #d8b4fe;
+  --accent-policy-50: #eff6ff;
+  --accent-policy-200: #bfdbfe;
+  --accent-policy-300: #93c5fd;
+
+  /* Additional Unmapped Colors */
+  --teal-accent: #45d0c9;
+  --warm-taupe: #f0ece3;
+  --soft-beige: #e0dbd3;
+  --deep-navy: #2a3f5f;
+  --burnished-gold: #c9a532;
+  --bright-gold: #ffd700;
+
+  /* Opacity Variants */
+  --champagne-gold-opacity-20: rgba(212, 175, 55, 0.2);
+  --champagne-gold-opacity-30: rgba(212, 175, 55, 0.3);
+  --midnight-navy-opacity-95: rgba(26, 31, 46, 0.95);
+
+  /* Neutral Grays */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+
+  /* Destructive Colors */
+  --destructive-light-100: #fee2e2;
+  --destructive-light-600: #dc2626;
+
+  /* Accent Color Variants for hover states */
+  --hover-dark: #b8860b;
+  --amber-600: #d97706;
+  --amber-50: #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-200: #fde68a;
+  --amber-300: #fcd34d;
+  --blue-50: #eff6ff;
+  --blue-200: #bfdbfe;
+  --blue-900: #111e3e;
+  --indigo-50: #eef2ff;
+  --indigo-100: #e0e7ff;
+  --indigo-200: #c7d2fe;
+  --yellow-50: #fefce8;
+  --yellow-100: #fef08a;
+
+  /* Light Mode Scrollbar */
+  --scrollbar-track: #faf8f5;
+  --scrollbar-thumb: #d4af37;
+  --scrollbar-thumb-hover: #c99b2d;
 
   --background: #faf8f5;
   --foreground: #1a1f2e;
@@ -52,41 +130,102 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+html.dark,
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  /* In dark mode, swap the meanings of light/dark colors */
+  --midnight-navy: #f0f1f6; /* Was dark text → now light text */
+  --charcoal-blue: #0a0d13; /* Secondary dark → even darker for footer */
+  --warm-ivory: #0f1117; /* Was light bg → now dark bg */
+  --bone-white: #161b22; /* Was light bg → now dark bg */
+  --champagne-gold: #e8b84a; /* Bright gold for dark mode */
+  --dusty-sky-blue: #8ba3d0; /* Light blue for text in dark */
+  --soft-stone-gray: #c9cace; /* Light gray for text in dark */
+  --deep-navy-overlay: rgba(15, 17, 23, 0.8);
+
+  /* Additional Unmapped Colors (Dark Mode) */
+  --teal-accent: #58d9d8;
+  --warm-taupe: #e8e4d8;
+  --soft-beige: #3d3933;
+  --deep-navy: #1c2a44;
+  --burnished-gold: #d4a844;
+  --bright-gold: #ffed4e;
+
+  /* Opacity Variants (Dark Mode) */
+  --champagne-gold-opacity-20: rgba(255, 215, 0, 0.2);
+  --champagne-gold-opacity-30: rgba(255, 215, 0, 0.3);
+  --midnight-navy-opacity-95: rgba(240, 241, 246, 0.95);
+
+  --background: #0f1117;
+  --foreground: #f0f1f6;
+  --card: #161b22;
+  --card-foreground: #f0f1f6;
+  --popover: #161b22;
+  --popover-foreground: #f0f1f6;
+  --primary: #f0f1f6;
+  --primary-foreground: #0f1117;
+  --secondary: #21262d;
+  --secondary-foreground: #f0f1f6;
+  --muted: #444c56;
+  --muted-foreground: #8b949e;
+  --accent: #ffd700;
+  --accent-foreground: #0f1117;
+  --destructive: #ff6b6b;
+  --destructive-foreground: #0f1117;
+  --border: rgba(240, 241, 246, 0.1);
+  --input: #161b22;
+  --ring: #ffd700;
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  --chart-1: #4ade80;
+  --chart-2: #60a5fa;
+  --chart-3: #fbbf24;
+  --chart-4: #f87171;
+  --chart-5: #c084fc;
+  --sidebar: #161b22;
+  --sidebar-foreground: #f0f1f6;
+  --sidebar-primary: #ffd700;
+  --sidebar-primary-foreground: #0f1117;
+  --sidebar-accent: #21262d;
+  --sidebar-accent-foreground: #f0f1f6;
+  --sidebar-border: rgba(240, 241, 246, 0.1);
+  --sidebar-ring: #ffd700;
+
+  /* Dark Mode Section-Specific Colors */
+  --accent-primary-50: #164e3a;
+  --accent-primary-200: #4ade80;
+  --accent-primary-300: #86efac;
+  --accent-secondary-50: #134e4a;
+  --accent-secondary-200: #2dd4bf;
+  --accent-secondary-300: #5eead4;
+  --accent-tertiary-50: #5b21b6;
+  --accent-tertiary-200: #a78bfa;
+  --accent-tertiary-300: #d8b4fe;
+  --accent-policy-50: #1e3a8a;
+  --accent-policy-200: #60a5fa;
+  --accent-policy-300: #93c5fd;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-600: #a0a9b8;
+  --gray-700: #d0d7e8;
+  --destructive-light-100: #fee2e2;
+  --destructive-light-600: #ef4444;
+
+  /* Dark Mode Luxury Brand Colors */
+  --hover-dark: #e8c200;
+  --amber-600: #fbbf24;
+  --amber-50: #78350f;
+  --amber-100: #92400e;
+  --amber-200: #b45309;
+  --amber-300: #d97706;
+  --blue-50: #0c1e35;
+  --blue-200: #3b82f6;
+  --blue-900: #dbeafe;
+
+  /* Dark Mode Scrollbar */
+  --scrollbar-track: #1e293b;
+  --scrollbar-thumb: #d4af37;
+  --scrollbar-thumb-hover: #e5c158;
 }
 
 @layer base {

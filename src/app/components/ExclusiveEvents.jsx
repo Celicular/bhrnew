@@ -1,4 +1,5 @@
 import { useState, useEffect, forwardRef } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Calendar,
   Sparkles,
@@ -7,8 +8,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-
-const API_BASE_URL = "https://bookholidayrental.com";
+import { api } from "@/utils/client";
 
 const EventSkeleton = forwardRef(() => (
   <motion.div
@@ -69,6 +69,7 @@ const EventSkeleton = forwardRef(() => (
 EventSkeleton.displayName = "EventSkeleton";
 
 export function ExclusiveEvents() {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
   const [apiEvents, setApiEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -77,13 +78,13 @@ export function ExclusiveEvents() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/events/list.php`);
-        const data = await response.json();
+        const response = await api.getEvents();
+        const data = response.data;
         if (data.success && data.data && data.data.length > 0) {
           const transformed = data.data.map((event) => {
             let imageUrl = event.event_image || "";
             if (imageUrl && !imageUrl.startsWith("http")) {
-              imageUrl = `${API_BASE_URL}/${imageUrl}`;
+              imageUrl = `https://bookholidayrental.com/${imageUrl}`;
             }
 
             const words = event.description.split(" ");
@@ -150,12 +151,12 @@ export function ExclusiveEvents() {
   };
 
   return (
-    <section className="py-32 px-6 bg-[#1a1f2e] relative overflow-hidden">
+    <section className="py-32 px-6 bg-midnight-navy dark:bg-charcoal-blue relative overflow-hidden">
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, #d4af37 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 2px 2px, var(--champagne-gold) 1px, transparent 0)`,
             backgroundSize: "48px 48px",
           }}
         />
@@ -169,16 +170,16 @@ export function ExclusiveEvents() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/20 mb-6">
-            <Sparkles className="w-5 h-5 text-[#d4af37]" />
-            <span className="text-sm text-[#d4af37] uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-champagne-gold/10 border border-champagne-gold/20 mb-6">
+            <Sparkles className="w-5 h-5 text-champagne-gold" />
+            <span className="text-sm text-champagne-gold uppercase tracking-wider">
               Special Collections
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl text-[#faf8f5] mb-4 font-serif font-light">
+          <h2 className="text-5xl md:text-6xl text-bone-white dark:text-white mb-4 font-serif font-light">
             Exclusive Experiences
           </h2>
-          <p className="text-lg text-[#9baab8] max-w-2xl mx-auto font-light">
+          <p className="text-lg text-dusty-sky-blue dark:text-champagne-gold max-w-2xl mx-auto font-light">
             Book your stay for major events and seasonal celebrations
           </p>
         </motion.div>
@@ -187,7 +188,7 @@ export function ExclusiveEvents() {
           {!loading && apiEvents.length > 4 && (
             <motion.button
               onClick={goToPrevious}
-              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 bg-[#d4af37] text-[#1a1f2e] rounded-full hover:bg-[#c9a532] transition-all duration-300 shadow-lg"
+              className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 bg-champagne-gold text-midnight-navy dark:text-charcoal-blue rounded-full hover:bg-burnished-gold transition-all duration-300 shadow-lg"
             >
               <ChevronLeft className="w-6 h-6" />
             </motion.button>
@@ -196,7 +197,7 @@ export function ExclusiveEvents() {
           {!loading && apiEvents.length > 4 && (
             <motion.button
               onClick={goToNext}
-              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 bg-[#d4af37] text-[#1a1f2e] rounded-full hover:bg-[#c9a532] transition-all duration-300 shadow-lg"
+              className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 bg-champagne-gold text-midnight-navy dark:text-charcoal-blue rounded-full hover:bg-burnished-gold transition-all duration-300 shadow-lg"
             >
               <ChevronRight className="w-6 h-6" />
             </motion.button>
@@ -223,42 +224,44 @@ export function ExclusiveEvents() {
                       }}
                     >
                       <div className="group relative overflow-hidden rounded-[2rem] cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 h-full">
-                        <div className="aspect-[16/10] overflow-hidden bg-[#2a3142]">
+                        <div className="aspect-[16/10] overflow-hidden bg-charcoal-blue">
                           <img
                             src={event.image}
                             alt={event.title}
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[rgba(26,31,46,0.95)] via-[rgba(26,31,46,0.4)] to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[var(--midnight-navy-opacity-95)] via-[rgba(26,31,46,0.4)] to-transparent" />
                         </div>
 
                         <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-md bg-white/10 border border-white/20 mb-4">
-                            <span className="text-xs text-[#ffd700] uppercase tracking-wider">
+                            <span className="text-xs text-bright-gold uppercase tracking-wider">
                               {event.category}
                             </span>
                           </div>
 
-                          <h3 className="text-2xl md:text-3xl text-[#faf8f5] mb-3 transform transition-transform duration-500 group-hover:translate-y-[-4px] font-serif font-medium line-clamp-2 bg-black/40 px-3 py-2 rounded-lg">
+                          <h3 className="text-2xl md:text-3xl text-bone-white dark:text-white mb-3 transform transition-transform duration-500 group-hover:translate-y-[-4px] font-serif font-medium line-clamp-2 bg-black/40 px-3 py-2 rounded-lg">
                             {event.title}
                           </h3>
 
                           <div className="flex flex-col gap-2 mb-6 text-sm">
                             <div className="flex items-center gap-2">
-                              <Calendar className="w-4 h-4 text-[#d4af37] flex-shrink-0" />
-                              <span className="text-[#e8e6e1] truncate">
+                              <Calendar className="w-4 h-4 text-champagne-gold flex-shrink-0" />
+                              <span className="text-[var(--warm-taupe)] dark:text-slate-300 truncate">
                                 {event.date}
                               </span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <MapPin className="w-4 h-4 text-[#d4af37] flex-shrink-0" />
-                              <span className="text-[#e8e6e1] truncate">
+                              <MapPin className="w-4 h-4 text-champagne-gold flex-shrink-0" />
+                              <span className="text-[var(--warm-taupe)] dark:text-slate-300 truncate">
                                 {event.location}
                               </span>
                             </div>
                           </div>
 
-                          <button className="w-full px-6 py-3 rounded-full bg-[#d4af37] hover:bg-[#c9a532] text-[#1a1f2e] transition-all duration-300 flex items-center justify-between group-hover:shadow-lg group-hover:shadow-[#d4af37]/20 text-sm md:text-base">
+                          <button 
+                            onClick={() => navigate("/events")}
+                            className="w-full px-6 py-3 rounded-full bg-champagne-gold hover:bg-burnished-gold text-midnight-navy dark:text-charcoal-blue transition-all duration-300 flex items-center justify-between group-hover:shadow-lg group-hover:shadow-[var(--champagne-gold)]/20 text-sm md:text-base">
                             <span className="font-medium">View Event</span>
                             <svg
                               className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
@@ -277,7 +280,7 @@ export function ExclusiveEvents() {
                         </div>
 
                         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#d4af37]/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[var(--champagne-gold)]/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                         </div>
                       </div>
                     </motion.div>
@@ -302,8 +305,8 @@ export function ExclusiveEvents() {
                 whileTap={{ scale: 0.9 }}
                 className={`transition-all duration-300 rounded-full ${
                   index === currentPage
-                    ? "w-8 h-3 bg-[#d4af37]"
-                    : "w-3 h-3 bg-[#d4af37]/30 hover:bg-[#d4af37]/60"
+                    ? "w-8 h-3 bg-champagne-gold"
+                    : "w-3 h-3 bg-champagne-gold/30 hover:bg-champagne-gold/60"
                 }`}
               />
             ))}

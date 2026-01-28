@@ -94,22 +94,22 @@ export function CurrencyModal({ isOpen, onClose }) {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 flex items-center justify-center z-50 px-4 py-4 md:py-0"
           >
-            <div className="w-full max-w-2xl max-h-[90vh] md:max-h-none bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+            <div className="w-full max-w-2xl max-h-[90vh] md:max-h-none bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
               {/* Header */}
-              <div className="relative h-24 md:h-32 bg-gradient-to-r from-[#1a1f2e] via-[#2a3f5f] to-[#1a1f2e] px-4 md:px-8 py-4 md:py-6 flex items-center justify-between">
+              <div className="relative h-24 md:h-32 bg-gradient-to-r from-midnight-navy dark:from-slate-700 via-deep-navy dark:via-slate-700 to-midnight-navy dark:to-slate-700 px-4 md:px-8 py-4 md:py-6 flex items-center justify-between">
                 {/* Decorative elements */}
                 <div className="absolute inset-0 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-[#d4af37]/10 rounded-full blur-3xl" />
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-[#d4af37]/5 rounded-full blur-2xl" />
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-champagne-gold/10 rounded-full blur-3xl" />
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-champagne-gold/5 rounded-full blur-2xl" />
                 </div>
 
                 {/* Title */}
                 <div className="relative z-10">
                   <h2 className="text-xl md:text-3xl font-serif font-light text-white flex items-center gap-2 md:gap-3">
-                    <Globe className="w-5 md:w-8 h-5 md:h-8 text-[#d4af37]" />
+                    <Globe className="w-5 md:w-8 h-5 md:h-8 text-champagne-gold" />
                     Currency & Location
                   </h2>
-                  <p className="hidden md:block text-[#f8f6f3]/70 text-sm mt-1">
+                  <p className="hidden md:block text-warm-ivory/70 text-sm mt-1">
                     Select your country and preferred currency
                   </p>
                 </div>
@@ -124,12 +124,12 @@ export function CurrencyModal({ isOpen, onClose }) {
               </div>
 
               {/* Content */}
-              <div className="p-4 md:p-8 flex-1 overflow-y-auto">
+              <div className="p-4 md:p-8 flex-1 overflow-y-auto dark:bg-slate-800">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                   {/* Country Selection */}
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-[#1a1f2e] uppercase tracking-wider">
+                      <label className="text-sm font-medium text-midnight-navy dark:text-white uppercase tracking-wider">
                         Country
                       </label>
                       <input
@@ -137,7 +137,7 @@ export function CurrencyModal({ isOpen, onClose }) {
                         placeholder="Search countries..."
                         value={countrySearch}
                         onChange={(e) => setCountrySearch(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl border border-[#e0dbd3] bg-[#faf8f5] text-[#1a1f2e] placeholder:text-[#1a1f2e]/40 focus:outline-none focus:border-[#d4af37] focus:ring-2 focus:ring-[#d4af37]/20 transition-all duration-300"
+                        className="w-full px-4 py-3 rounded-xl border border-soft-beige dark:border-slate-600 bg-bone-white dark:bg-slate-700 text-midnight-navy dark:text-white placeholder:text-midnight-navy/40 dark:placeholder:text-white/40 focus:outline-none focus:border-champagne-gold focus:ring-2 focus:ring-[var(--champagne-gold)]/20 transition-all duration-300"
                       />
                     </div>
 
@@ -149,8 +149,8 @@ export function CurrencyModal({ isOpen, onClose }) {
                           onClick={() => handleCountryChange(item.country)}
                           className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 ${
                             tempCountry === item.country
-                              ? "bg-[#d4af37] text-white font-medium shadow-lg shadow-[#d4af37]/30"
-                              : "bg-[#f8f6f3] text-[#1a1f2e] hover:bg-[#f0ece3] border border-[#e0dbd3]"
+                              ? "bg-champagne-gold dark:bg-champagne-gold text-white dark:text-charcoal-blue font-medium shadow-lg shadow-champagne-gold/30"
+                              : "bg-warm-ivory dark:bg-slate-700 text-midnight-navy dark:text-slate-300 hover:bg-warm-taupe dark:hover:bg-slate-600 border border-soft-beige dark:border-slate-600"
                           }`}
                         >
                           <div className="flex items-center justify-between">
@@ -167,7 +167,7 @@ export function CurrencyModal({ isOpen, onClose }) {
                   {/* Currency Selection */}
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-[#1a1f2e] uppercase tracking-wider">
+                      <label className="text-sm font-medium text-midnight-navy dark:text-white uppercase tracking-wider">
                         Currency
                       </label>
                       <input
@@ -175,7 +175,7 @@ export function CurrencyModal({ isOpen, onClose }) {
                         placeholder="Search currencies..."
                         value={currencySearch}
                         onChange={(e) => setCurrencySearch(e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl border border-[#e0dbd3] bg-[#faf8f5] text-[#1a1f2e] placeholder:text-[#1a1f2e]/40 focus:outline-none focus:border-[#d4af37] focus:ring-2 focus:ring-[#d4af37]/20 transition-all duration-300"
+                        className="w-full px-4 py-3 rounded-xl border border-soft-beige dark:border-slate-600 bg-bone-white dark:bg-slate-700 text-midnight-navy dark:text-white placeholder:text-midnight-navy/40 dark:placeholder:text-white/40 focus:outline-none focus:border-champagne-gold focus:ring-2 focus:ring-[var(--champagne-gold)]/20 transition-all duration-300"
                       />
                     </div>
 
@@ -188,8 +188,8 @@ export function CurrencyModal({ isOpen, onClose }) {
                             onClick={() => handleCurrencyChange(item.currency)}
                             className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 ${
                               tempCurrency === item.currency
-                                ? "bg-[#d4af37] text-white font-medium shadow-lg shadow-[#d4af37]/30"
-                                : "bg-[#f8f6f3] text-[#1a1f2e] hover:bg-[#f0ece3] border border-[#e0dbd3]"
+                                ? "bg-champagne-gold dark:bg-champagne-gold text-white dark:text-charcoal-blue font-medium shadow-lg shadow-champagne-gold/30"
+                                : "bg-warm-ivory dark:bg-slate-700 text-midnight-navy dark:text-slate-300 hover:bg-warm-taupe dark:hover:bg-slate-600 border border-soft-beige dark:border-slate-600"
                             }`}
                           >
                             <div className="flex items-center justify-between">
@@ -204,7 +204,7 @@ export function CurrencyModal({ isOpen, onClose }) {
                           </button>
                         ))
                       ) : (
-                        <div className="flex items-center justify-center h-full text-[#1a1f2e]/50">
+                        <div className="flex items-center justify-center h-full text-midnight-navy/50 dark:text-white/50">
                           <p>No currencies found</p>
                         </div>
                       )}
@@ -213,26 +213,26 @@ export function CurrencyModal({ isOpen, onClose }) {
                 </div>
 
                 {/* Current Selection Summary */}
-                <div className="mt-4 md:mt-8 p-3 md:p-4 rounded-xl bg-gradient-to-r from-[#faf8f5] to-[#f0ece3] border border-[#d4af37]/20">
-                  <p className="text-xs md:text-sm text-[#1a1f2e]">
+                <div className="mt-4 md:mt-8 p-3 md:p-4 rounded-xl bg-gradient-to-r from-[var(--bone-white)] dark:from-slate-700 to-warm-taupe dark:to-slate-700 border border-champagne-gold/20 dark:border-slate-600">
+                  <p className="text-xs md:text-sm text-midnight-navy dark:text-white">
                     <span className="font-medium">Selected:</span>{" "}
-                    <span className="text-[#d4af37]">{tempCountry}</span> •{" "}
-                    <span className="text-[#d4af37]">{tempCurrency}</span>
+                    <span className="text-champagne-gold">{tempCountry}</span> •{" "}
+                    <span className="text-champagne-gold">{tempCurrency}</span>
                   </p>
                 </div>
               </div>
 
               {/* Footer */}
-              <div className="flex items-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-[#faf8f5] border-t border-[#e0dbd3]">
+              <div className="flex items-center gap-2 md:gap-3 px-4 md:px-8 py-3 md:py-4 bg-bone-white dark:bg-slate-800 border-t border-soft-beige dark:border-slate-700">
                 <button
                   onClick={onClose}
-                  className="flex-1 px-4 md:px-6 py-2 md:py-3 rounded-xl border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/5 transition-all duration-300 font-medium text-xs md:text-base"
+                  className="flex-1 px-4 md:px-6 py-2 md:py-3 rounded-xl border border-champagne-gold text-champagne-gold dark:text-champagne-gold hover:bg-champagne-gold/5 dark:hover:bg-champagne-gold/10 transition-all duration-300 font-medium text-xs md:text-base"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleApply}
-                  className="flex-1 px-4 md:px-6 py-2 md:py-3 rounded-xl bg-[#d4af37] text-[#1a1f2e] hover:bg-[#c9a532] shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-xs md:text-base"
+                  className="flex-1 px-4 md:px-6 py-2 md:py-3 rounded-xl bg-champagne-gold dark:bg-champagne-gold text-midnight-navy dark:text-charcoal-blue hover:bg-burnished-gold dark:hover:bg-burnished-gold shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-xs md:text-base"
                 >
                   Apply Changes
                 </button>
@@ -249,11 +249,11 @@ export function CurrencyModal({ isOpen, onClose }) {
               background: transparent;
             }
             .custom-scrollbar::-webkit-scrollbar-thumb {
-              background: #d4af37;
+              background: var(--champagne-gold);
               border-radius: 3px;
             }
             .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-              background: #c9a532;
+              background: var(--burnished-gold);
             }
           `}</style>
         </>

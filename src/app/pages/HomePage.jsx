@@ -6,12 +6,11 @@ import { ExclusiveEvents } from "@/app/components/ExclusiveEvents";
 import { BrandStory } from "@/app/components/BrandStory";
 import { Testimonials } from "@/app/components/Testimonials";
 import { InspirationalCTA } from "@/app/components/InspirationalCTA";
-import { PopularDestinations } from "@/app/components/PopularDestinations";
 import { Footer } from "@/app/components/Footer";
 
 export function HomePage() {
   return (
-    <div className="min-h-screen bg-[#faf8f5] overflow-x-hidden">
+    <div className="min-h-screen bg-bone-white overflow-x-hidden">
       <Navbar />
       <Hero />
       <FeaturedProperties />
@@ -20,7 +19,6 @@ export function HomePage() {
       <BrandStory />
       <Testimonials />
       <InspirationalCTA />
-      <PopularDestinations />
       <Footer />
     </div>
   );

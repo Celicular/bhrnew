@@ -25,18 +25,18 @@ export function InspirationalCTA() {
         >
           {/* Icon */}
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full backdrop-blur-md bg-white/10 border border-white/20 mb-8">
-            <Sparkles className="w-10 h-10 text-[#d4af37]" />
+            <Sparkles className="w-10 h-10 text-champagne-gold" />
           </div>
 
           {/* Headline */}
-          <h2 className="text-5xl md:text-6xl lg:text-7xl text-[#faf8f5] mb-8 leading-tight font-serif font-light">
+          <h2 className="text-5xl md:text-6xl lg:text-7xl text-bone-white dark:text-white mb-8 leading-tight font-serif font-light">
             Your Dream Vacation
             <br />
-            <span className="text-[#d4af37]">Starts Here</span>
+            <span className="text-champagne-gold">Starts Here</span>
           </h2>
 
           {/* Subtext */}
-          <p className="text-xl text-[#c5c3bd] mb-12 font-light max-w-2xl mx-auto">
+          <p className="text-xl text-soft-stone-gray mb-12 font-light max-w-2xl mx-auto">
             Book verified vacation rentals across the United States with
             confidence
           </p>
@@ -45,7 +45,7 @@ export function InspirationalCTA() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            className="group relative overflow-hidden px-12 py-6 rounded-full bg-[#d4af37] text-[#1a1f2e] shadow-2xl hover:shadow-[#d4af37]/30 transition-all duration-500"
+            className="group relative overflow-hidden px-12 py-6 rounded-full bg-champagne-gold text-midnight-navy dark:text-charcoal-blue shadow-2xl hover:shadow-champagne-gold/30 transition-all duration-500"
           >
             <span className="relative z-10 flex items-center gap-3 text-lg">
               Start Your Journey
@@ -74,18 +74,18 @@ export function InspirationalCTA() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-[#9baab8]"
+            className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-dusty-sky-blue"
           >
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-[#d4af37]" />
+              <div className="w-2 h-2 rounded-full bg-champagne-gold" />
               <span>Verified Properties</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-[#d4af37]" />
+              <div className="w-2 h-2 rounded-full bg-champagne-gold" />
               <span>24/7 Concierge</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-[#d4af37]" />
+              <div className="w-2 h-2 rounded-full bg-champagne-gold" />
               <span>Best Price Guarantee</span>
             </div>
           </motion.div>
@@ -93,7 +93,7 @@ export function InspirationalCTA() {
       </div>
 
       {/* Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#d4af37]/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-champagne-gold/5 rounded-full blur-[120px] pointer-events-none" />
     </section>
   );
 }

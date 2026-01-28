@@ -14,8 +14,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useCurrency } from "@/context/CurrencyContext";
-
-const API_BASE_URL = "https://bookholidayrental.com";
+import { api } from "@/utils/client";
 
 const amenityIcons = {
   "Air Conditioning": Wind,
@@ -133,18 +132,16 @@ export function FeaturedProperties() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await fetch(
-          `${API_BASE_URL}/api/property/view.php?list=1&limit=8`,
-        );
+        const response = await api.getProperties();
 
-        const data = await response.json();
+        const data = response.data;
         if (data.success && data.data && data.data.length > 0) {
           // Transform API data to match component structure
           const transformed = data.data.map((prop) => {
             let imageUrl = prop.images?.[0]?.image_url || "";
             // If image URL is relative, prepend the domain
             if (imageUrl && !imageUrl.startsWith("http")) {
-              imageUrl = `${API_BASE_URL}/${imageUrl}`;
+              imageUrl = `https://bookholidayrental.com/${imageUrl}`;
             }
             return {
               id: prop.id,
@@ -216,7 +213,7 @@ export function FeaturedProperties() {
 
   return (
     <section
-      className="px-6 bg-[#faf8f5]"
+      className="px-6 bg-bone-white"
       style={{ marginTop: "128px", marginBottom: 0 }}
       id="inspiration"
     >
@@ -229,10 +226,10 @@ export function FeaturedProperties() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-20"
         >
-          <h2 className="text-5xl md:text-6xl text-[#1a1f2e] mb-4 font-serif font-light">
+          <h2 className="text-5xl md:text-6xl text-midnight-navy mb-4 font-serif font-light">
             Featured Collection
           </h2>
-          <p className="text-lg text-[#6b7280] max-w-2xl mx-auto font-light">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto font-light">
             Handpicked vacation homes across the United States
           </p>
         </motion.div>
@@ -242,7 +239,7 @@ export function FeaturedProperties() {
           {/* Left Navigation Button */}
           <motion.button
             onClick={goToPrevious}
-            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 bg-[#1a1f2e] text-white rounded-full hover:bg-[#2a3142] transition-all duration-300 shadow-lg"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 p-3 bg-midnight-navy dark:bg-charcoal-blue text-white rounded-full hover:bg-charcoal-blue dark:hover:bg-slate-700 transition-all duration-300 shadow-lg"
           >
             <ChevronLeft className="w-6 h-6" />
           </motion.button>
@@ -250,7 +247,7 @@ export function FeaturedProperties() {
           {/* Right Navigation Button */}
           <motion.button
             onClick={goToNext}
-            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 bg-[#1a1f2e] text-white rounded-full hover:bg-[#2a3142] transition-all duration-300 shadow-lg"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 p-3 bg-midnight-navy dark:bg-charcoal-blue text-white rounded-full hover:bg-charcoal-blue dark:hover:bg-slate-700 transition-all duration-300 shadow-lg"
           >
             <ChevronRight className="w-6 h-6" />
           </motion.button>
@@ -278,7 +275,10 @@ export function FeaturedProperties() {
                         ease: [0.22, 1, 0.36, 1],
                       }}
                     >
-                      <div className="group cursor-pointer transition-transform duration-500">
+                      <a
+                        href={`/#/property/${property.id}`}
+                        className="group cursor-pointer transition-transform duration-500 block"
+                      >
                         {/* Image Container */}
                         <div className="relative overflow-hidden rounded-[2rem] mb-6 shadow-xl hover:shadow-2xl transition-all duration-500">
                           <div className="aspect-[4/3] overflow-hidden">
@@ -293,9 +293,9 @@ export function FeaturedProperties() {
                           <div className="absolute inset-0 bg-gradient-to-t from-[rgba(26,31,46,0.6)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                           {/* Rating Badge */}
-                          <div className="absolute top-6 left-6 backdrop-blur-md bg-white/90 px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
-                            <Star className="w-4 h-4 fill-[#d4af37] text-[#d4af37]" />
-                            <span className="text-sm font-medium text-[#1a1f2e]">
+                          <div className="absolute top-6 left-6 backdrop-blur-md bg-white/90 dark:bg-slate-800 px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
+                            <Star className="w-4 h-4 fill-champagne-gold text-champagne-gold" />
+                            <span className="text-sm font-medium text-midnight-navy dark:text-white">
                               {property.rating.toFixed(1)}
                             </span>
                           </div>
@@ -303,18 +303,19 @@ export function FeaturedProperties() {
                           {/* Heart Button */}
                           <motion.button
                             onClick={(e) => {
+                              e.preventDefault();
                               e.stopPropagation();
                               toggleFavorite(property.id);
                             }}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
-                            className="absolute top-6 right-6 p-3 backdrop-blur-md bg-white/90 rounded-full shadow-lg hover:bg-white transition-all duration-300"
+                            className="absolute top-6 right-6 p-3 backdrop-blur-md bg-white/90 dark:bg-slate-800 rounded-full shadow-lg hover:bg-white dark:hover:bg-slate-700 transition-all duration-300"
                           >
                             <Heart
                               className={`w-5 h-5 transition-all duration-300 ${
                                 favorites.includes(property.id)
                                   ? "fill-red-500 text-red-500"
-                                  : "text-[#1a1f2e]"
+                                  : "text-midnight-navy"
                               }`}
                             />
                           </motion.button>
@@ -323,10 +324,10 @@ export function FeaturedProperties() {
                         {/* Property Info */}
                         <div className="space-y-4">
                           <div>
-                            <h3 className="text-2xl text-[#1a1f2e] mb-2 line-clamp-2 font-serif font-medium">
+                            <h3 className="text-2xl text-midnight-navy mb-2 line-clamp-2 font-serif font-medium">
                               {property.name}
                             </h3>
-                            <div className="flex items-center gap-2 text-[#9baab8] mb-4">
+                            <div className="flex items-center gap-2 text-dusty-sky-blue mb-4">
                               <MapPin className="w-4 h-4" />
                               <span className="text-sm">
                                 {property.location}
@@ -336,20 +337,20 @@ export function FeaturedProperties() {
 
                           {/* Guests, Beds, Baths */}
                           <div className="flex items-center gap-6">
-                            <div className="flex items-center gap-2 text-[#1a1f2e]">
-                              <Users className="w-5 h-5 text-[#d4af37]" />
+                            <div className="flex items-center gap-2 text-midnight-navy">
+                              <Users className="w-5 h-5 text-champagne-gold" />
                               <span className="text-sm">
                                 {property.guests} guests
                               </span>
                             </div>
-                            <div className="flex items-center gap-2 text-[#1a1f2e]">
-                              <Bed className="w-5 h-5 text-[#d4af37]" />
+                            <div className="flex items-center gap-2 text-midnight-navy">
+                              <Bed className="w-5 h-5 text-champagne-gold" />
                               <span className="text-sm">
                                 {property.bedrooms} beds
                               </span>
                             </div>
-                            <div className="flex items-center gap-2 text-[#1a1f2e]">
-                              <Bath className="w-5 h-5 text-[#d4af37]" />
+                            <div className="flex items-center gap-2 text-midnight-navy">
+                              <Bath className="w-5 h-5 text-champagne-gold" />
                               <span className="text-sm">
                                 {property.bathrooms} baths
                               </span>
@@ -363,10 +364,10 @@ export function FeaturedProperties() {
                               return (
                                 <div
                                   key={amenity}
-                                  className="flex items-center gap-2 px-3 py-2 rounded-full bg-[#f8f6f3] border border-[#1a1f2e]/5"
+                                  className="flex items-center gap-2 px-3 py-2 rounded-full bg-warm-ivory border border-midnight-navy/5"
                                 >
-                                  <Icon className="w-4 h-4 text-[#d4af37]" />
-                                  <span className="text-xs text-[#6b7280]">
+                                  <Icon className="w-4 h-4 text-champagne-gold" />
+                                  <span className="text-xs text-gray-600">
                                     {amenity}
                                   </span>
                                 </div>
@@ -374,26 +375,26 @@ export function FeaturedProperties() {
                             })}
                           </div>
 
-                          <div className="flex items-center justify-between pt-4 border-t border-[#1a1f2e]/10">
-                            <div className="text-sm text-[#6b7280]">
+                          <div className="flex items-center justify-between pt-4 border-t border-midnight-navy/10">
+                            <div className="text-sm text-gray-600">
                               {property.reviews} reviews
                             </div>
                             <div className="text-right">
                               <div className="flex items-baseline gap-1">
-                                <span className="text-3xl text-[#1a1f2e] font-serif font-light">
+                                <span className="text-3xl text-midnight-navy font-serif font-light">
                                   {symbol}
                                   {Math.abs(
                                     Math.round(convertPrice(property.price)),
                                   ).toLocaleString()}
                                 </span>
-                                <span className="text-sm text-[#9baab8]">
+                                <span className="text-sm text-dusty-sky-blue">
                                   /night
                                 </span>
                               </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </a>
                     </motion.div>
                   ))}
             </AnimatePresence>
@@ -417,8 +418,8 @@ export function FeaturedProperties() {
                 whileTap={{ scale: 0.9 }}
                 className={`transition-all duration-300 rounded-full ${
                   index === currentPage
-                    ? "w-8 h-3 bg-[#d4af37]"
-                    : "w-3 h-3 bg-[#d4af37]/30 hover:bg-[#d4af37]/60"
+                    ? "w-8 h-3 bg-champagne-gold"
+                    : "w-3 h-3 bg-champagne-gold/30 hover:bg-champagne-gold/60"
                 }`}
               />
             ))}

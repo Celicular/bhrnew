@@ -1,4 +1,5 @@
-import { Instagram, Facebook, Twitter, Mail } from "lucide-react";
+import { Instagram, Facebook, Twitter, Mail, Sun, Moon } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 const footerLinks = {
   main: [
@@ -30,8 +31,10 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <footer className="bg-[#1a1f2e] text-[#c5c3bd] pt-20 pb-12 px-6">
+    <footer className="bg-midnight-navy dark:bg-charcoal-blue text-soft-stone-gray pt-20 pb-12 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
@@ -43,7 +46,7 @@ export function Footer() {
               className="h-10"
               style={{ filter: "brightness(0) invert(1)" }}
             />
-            <p className="text-[#9baab8] font-light leading-relaxed max-w-sm">
+            <p className="text-dusty-sky-blue font-light leading-relaxed max-w-sm">
               Your trusted partner for exceptional vacation rentals across the
               United States. Discover, book, and experience unforgettable stays.
             </p>
@@ -51,7 +54,7 @@ export function Footer() {
 
           {/* Main Links */}
           <div>
-            <h4 className="text-[#faf8f5] mb-6 uppercase tracking-wider text-xs font-semibold">
+            <h4 className="text-bone-white dark:text-white mb-6 uppercase tracking-wider text-xs font-semibold">
               Navigation
             </h4>
             <ul className="space-y-3">
@@ -59,7 +62,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-[#9baab8] hover:text-[#d4af37] transition-colors duration-300 text-sm"
+                    className="text-dusty-sky-blue hover:text-champagne-gold transition-colors duration-300 text-sm"
                   >
                     {link.label}
                   </a>
@@ -70,7 +73,7 @@ export function Footer() {
 
           {/* About & Support */}
           <div>
-            <h4 className="text-[#faf8f5] mb-6 uppercase tracking-wider text-xs font-semibold">
+            <h4 className="text-bone-white dark:text-white mb-6 uppercase tracking-wider text-xs font-semibold">
               Company
             </h4>
             <ul className="space-y-3">
@@ -78,7 +81,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-[#9baab8] hover:text-[#d4af37] transition-colors duration-300 text-sm"
+                    className="text-dusty-sky-blue hover:text-champagne-gold transition-colors duration-300 text-sm"
                   >
                     {link.label}
                   </a>
@@ -89,7 +92,7 @@ export function Footer() {
 
           {/* Help & Support */}
           <div>
-            <h4 className="text-[#faf8f5] mb-6 uppercase tracking-wider text-xs font-semibold">
+            <h4 className="text-bone-white dark:text-white mb-6 uppercase tracking-wider text-xs font-semibold">
               Support
             </h4>
             <ul className="space-y-3">
@@ -97,7 +100,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-[#9baab8] hover:text-[#d4af37] transition-colors duration-300 text-sm"
+                    className="text-dusty-sky-blue hover:text-champagne-gold transition-colors duration-300 text-sm"
                   >
                     {link.label}
                   </a>
@@ -108,7 +111,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-[#faf8f5] mb-6 uppercase tracking-wider text-xs font-semibold">
+            <h4 className="text-bone-white dark:text-white mb-6 uppercase tracking-wider text-xs font-semibold">
               Legal
             </h4>
             <ul className="space-y-3">
@@ -116,7 +119,7 @@ export function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-[#9baab8] hover:text-[#d4af37] transition-colors duration-300 text-sm"
+                    className="text-dusty-sky-blue hover:text-champagne-gold transition-colors duration-300 text-sm"
                   >
                     {link.label}
                   </a>
@@ -132,22 +135,39 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Copyright */}
-          <div className="text-sm text-[#9baab8]">
+          <div className="text-sm text-dusty-sky-blue">
             © 2026 Book Holiday Rental. All rights reserved.
           </div>
 
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#d4af37]/10 hover:border-[#d4af37]/30 transition-all duration-300 group"
-              >
-                <social.icon className="w-5 h-5 text-[#9baab8] group-hover:text-[#d4af37] transition-colors duration-300" />
-              </a>
-            ))}
+          {/* Social Links and Theme Toggle */}
+          <div className="flex items-center gap-6">
+            {/* Social Links */}
+            <div className="flex items-center gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-champagne-gold/10 hover:border-champagne-gold/30 transition-all duration-300 group"
+                >
+                  <social.icon className="w-5 h-5 text-dusty-sky-blue group-hover:text-champagne-gold transition-colors duration-300" />
+                </a>
+              ))}
+            </div>
+
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-champagne-gold/10 hover:border-champagne-gold/30 transition-all duration-300 group"
+              title={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+            >
+              {theme === "light" ? (
+                <Moon className="w-5 h-5 text-dusty-sky-blue group-hover:text-champagne-gold transition-colors duration-300" />
+              ) : (
+                <Sun className="w-5 h-5 text-dusty-sky-blue group-hover:text-champagne-gold transition-colors duration-300" />
+              )}
+            </button>
           </div>
         </div>
       </div>

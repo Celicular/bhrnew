@@ -1,4 +1,5 @@
 @import "./theme.css";
+@import "leaflet/dist/leaflet.css";
 
 @tailwind base;
 @tailwind components;
@@ -37,6 +38,32 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Custom scrollbar styling using CSS variables */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track, #faf8f5);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb, #d4af37);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover, #c99b2d);
+  }
+
+  /* Firefox scrollbar - only on root elements to avoid performance issues */
+  html {
+    scrollbar-color: var(--scrollbar-thumb, #d4af37)
+      var(--scrollbar-track, #faf8f5);
+    scrollbar-width: thin;
+  }
+
   button {
     cursor: pointer;
     border: none;
@@ -49,8 +76,46 @@
     text-decoration: none;
   }
 
+  /* Seasonal Pricing gradient */
+  .seasonal-pricing-gradient {
+    background: linear-gradient(
+      to bottom right,
+      rgb(254 243 48 / 0.3),
+      rgb(254 243 48 / 0)
+    );
+  }
+
+  html.dark .seasonal-pricing-gradient {
+    background: linear-gradient(
+      to bottom right,
+      rgb(99 102 241 / 0.4),
+      rgb(99 102 241 / 0)
+    );
+  }
+
   input,
   textarea {
     font-family: inherit;
   }
+}
+
+/* Leaflet z-index overrides */
+.leaflet-bottom {
+  z-index: 1 !important;
+}
+
+.leaflet-top {
+  z-index: 1 !important;
+}
+
+.leaflet-control {
+  z-index: 1 !important;
+}
+
+.leaflet-container {
+  z-index: 0 !important;
+}
+
+.leaflet-pane {
+  z-index: 1 !important;
 }

@@ -6,6 +6,7 @@ import {
   useCallback,
 } from "react";
 import { getCurrencySymbol, convertPrice } from "@/utils/currencyData";
+import { api } from "@/utils/client";
 
 const CurrencyContext = createContext();
 
@@ -26,11 +27,9 @@ export function CurrencyProvider({ children }) {
     const fetchRates = async () => {
       setIsLoadingRates(true);
       try {
-        const response = await fetch(
-          "https://api.exchangerate-api.com/v4/latest/USD",
-        );
-        if (response.ok) {
-          const data = await response.json();
+        const response = await api.getExchangeRates();
+        if (response.status === 200) {
+          const data = response.data;
           setExchangeRates(data.rates);
           localStorage.setItem("exchangeRates", JSON.stringify(data.rates));
         }
